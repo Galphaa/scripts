@@ -125,7 +125,7 @@ function main {
 	list_create
 	# Replace list
 	list_replace
-    # Update repository information
+	# Update repository information
 	refresh_repos
 }
 
