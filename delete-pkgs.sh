@@ -5,7 +5,7 @@
 #   Sam Hewitt <sam@snwh.org>
 #
 # Description:
-#   A script for removing pkg files
+#   A script for removing OS X/mac OS pkg files
 #
 # Legal Stuff:
 #
@@ -21,8 +21,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
-
-# find some pkgs with `pkgutil --pkgs` and update this array
+# Declarations
 # PKGS=( "com.example.pkg" "com.another-example.pkg")
 PKGS=( )
 
@@ -44,8 +43,7 @@ echo -e "\033[1;36m$@\033[0m"
 }
 
 
-
-# Forget
+# Forget pkg
 function forget_pkg {
 	# Forget the pkg
 	show_question "About to forget the pkg '$PKGNAME', are you sure? (Y)es (No)"
@@ -66,10 +64,10 @@ function forget_pkg {
 	esac
 }
 
-# Delete
+# Delete pkg files/directors
 function delete_pkg {
 	# Remove files and directories installed by the pkg# Forget the pkg
-	show_question "About to delete all files/directories installed by '$PKGNAME', are you sure? (Y)es (No)"
+	show_question "About to delete all files & directories installed by '$PKGNAME', are you sure? (Y)es (No)"
 	read REPLY
 	case $REPLY in
 	[Yy]* ) 
@@ -111,9 +109,10 @@ function main {
 }
 
 # Run
-
 if [ ${#PKGS[@]} -eq 0 ]; then
     show_warning "No pkgs selected. Find some pkgs with 'pkgutil --pkgs' and update this array."
 else
     main
 fi
+
+#EOF
