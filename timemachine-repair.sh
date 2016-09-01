@@ -27,10 +27,10 @@ if [[ $(whoami) != 'root' ]]; then
 fi
 
 # TM_HOSTNAME=$(hostname -s | sed -e 's/-/ /g')
-TM_HOSTNAME='deepblue.local'
-MOUNTPOINT=/Volumes/TimeMachine
-SPARSEBUNDLE=iMac.sparsebundle
-PLIST=iMac.sparsebundle/com.apple.TimeMachine.MachineID.plist
+TM_HOSTNAME='deepblue.local' # Time Machine Hostname
+MOUNTPOINT='/Volumes/TimeMachine' # Mountpoint
+SPARSEBUNDLE='iMac.sparsebundle' # Name of the backed-up computer's sparsebundle
+PLIST=$SPARSEBUNDLE/com.apple.TimeMachine.MachineID.plist # plist file
 
 # Disable Time Machine service
 echo "Disabling Time Machine service..."
