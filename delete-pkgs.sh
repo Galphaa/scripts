@@ -110,7 +110,8 @@ function main {
 
 # Run
 if [ ${#PKGS[@]} -eq 0 ]; then
-    show_warning "No pkgs selected. Find some pkgs with 'pkgutil --pkgs' and update this array."
+    show_warning "No pkgs selected."
+    show_info "Find some pkgs to delete with 'pkgutil --pkgs' and update the PKG array in this script."
 else
     main
 fi
