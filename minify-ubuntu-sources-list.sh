@@ -80,11 +80,11 @@ function create_backup {
 	# Check if backup exists
 	if [ ! -f /etc/apt/sources.list.orig ]; then
 		show_info "Backup of original 'sources.list' already exists. Continuing..."
-
+	else
 		show_info "Creating backup of original 'sources.list'"
-	    show_warning 'Requires root privileges'
+		show_warning 'Requires root privileges'
 		sudo cp -r /etc/apt/sources.list /etc/apt/sources.list.orig
-	    show_success 'Done.'
+		show_success 'Done.'
 	fi	
 }
 
@@ -105,9 +105,9 @@ function list_replace {
 		exit
 		;;
 	* )
-	    show_error '\aSorry, try again.'
-	    list_replace
-	    ;;
+		show_error '\aSorry, try again.'
+		list_replace
+		;;
 	esac
 }
 
@@ -117,19 +117,19 @@ function refresh_repos {
 	read REPLY
 	case $REPLY in
 	[Yy]* ) 
-	    # Update repository information
-	    show_info 'Updating repository information...'
-	    show_warning 'Requires root privileges'
-	    sudo apt-get update -y
-	    show_success 'Done.'
+		# Update repository information
+		show_info 'Updating repository information...'
+		show_warning 'Requires root privileges'
+		sudo apt-get update -y
+		show_success 'Done.'
 		;;
 	[Nn]* )
 		show_info 'OK, continuing...'
 		;;
 	* )
-	    show_error '\aSorry, try again.'
-	    refresh_repos
-	    ;;
+		show_error '\aSorry, try again.'
+		refresh_repos
+		;;
 	esac
 }
 
