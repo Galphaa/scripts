@@ -21,8 +21,8 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
 
-THEMENAME=egtk
-THEMEDIR=egtk
+THEMENAME=stylesheet
+THEMEDIR=stylesheet
 PROJECTDIR="$HOME/Projects/elementary/"
 
 echo "$THEMENAME development quick render & install script."
