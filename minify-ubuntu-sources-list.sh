@@ -78,10 +78,10 @@ deb http://archive.canonical.com/ubuntu $VERSION partner
 function create_backup {
 	show_info "Backup original 'sources.list'"
 	# Check if backup exists
-	if [ ! -f /etc/apt/sources.list.orig ]; then
+	if [ ! -f /etc/apt/sources.list.save ]; then
 		echo "Creating backup of original 'sources.list'"
 		show_warning 'Requires root privileges'
-		sudo cp -r /etc/apt/sources.list /etc/apt/sources.list.orig
+		sudo cp -r /etc/apt/sources.list /etc/apt/sources.list.save
 		show_success 'Done.'
 	else
 		echo "Backup of original 'sources.list' already exists. Continuing..."
@@ -95,13 +95,14 @@ function list_replace {
 	read REPLY
 	case $REPLY in
 	[Yy]* ) 
-		echo '\aReplacing...'
+		show_info '\aReplacing...'
 		show_warning 'Requires root privileges'
 		sudo cp -r sources.list /etc/apt/
 		rm sources.list
 		;;
 	[Nn]* )
 		echo 'OK, exiting...'
+		rm sources.list
 		exit
 		;;
 	* )
