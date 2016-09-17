@@ -79,12 +79,12 @@ function create_backup {
 	show_info "Backup original 'sources.list'"
 	# Check if backup exists
 	if [ ! -f /etc/apt/sources.list.orig ]; then
-		show_info "Backup of original 'sources.list' already exists. Continuing..."
-	else
-		show_info "Creating backup of original 'sources.list'"
+		echo "Creating backup of original 'sources.list'"
 		show_warning 'Requires root privileges'
 		sudo cp -r /etc/apt/sources.list /etc/apt/sources.list.orig
 		show_success 'Done.'
+	else
+		echo "Backup of original 'sources.list' already exists. Continuing..."
 	fi	
 }
 
@@ -101,7 +101,7 @@ function list_replace {
 		rm sources.list
 		;;
 	[Nn]* )
-		show_info 'OK, exiting...'
+		echo 'OK, exiting...'
 		exit
 		;;
 	* )
@@ -124,7 +124,7 @@ function refresh_repos {
 		show_success 'Done.'
 		;;
 	[Nn]* )
-		show_info 'OK, continuing...'
+		echo 'OK, continuing...'
 		;;
 	* )
 		show_error '\aSorry, try again.'
